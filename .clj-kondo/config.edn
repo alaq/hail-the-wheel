@@ -1,0 +1,19 @@
+{:lint-as {
+           garden.def/defcssfn clojure.core/def
+           garden.def/defkeyframes clojure.core/def
+           garden.def/defrule clojure.core/def
+           garden.def/defstyles clojure.core/def
+           garden.def/defstylesheet clojure.core/def}
+ :linters {:unresolved-symbol {:exclude [goog.DEBUG]}
+           :unused-namespace {:exclude [cljs.repl]}
+           :unused-referred-var {:exclude {cljs.repl [Error->map
+                                                      apropos
+                                                      dir
+                                                      doc
+                                                      error->str
+                                                      ex-str
+                                                      ex-triage
+                                                      find-doc
+                                                      print-doc
+                                                      pst
+                                                      source]}}}}
