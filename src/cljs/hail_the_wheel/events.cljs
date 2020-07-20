@@ -11,13 +11,13 @@
 
 (def yes-no-strings ["YES" "NO"])
 
-(re-frame/reg-event-db
+(re-frame/reg-event-fx
  :spin
  [(re-frame/inject-cofx :yn)]
  (fn [cofx _]
-   (assoc cofx :yn (:yn cofx))))
+   {:db (assoc (:db cofx) :yn (:yn cofx))}))
 
 (re-frame/reg-cofx
   :yn
   (fn [cofx _]
-    (assoc-in cofx [:db :yn] (yes-no-strings (int (rand 2))))))
+    (assoc cofx :yn (yes-no-strings (int (rand 2))))))

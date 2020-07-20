@@ -14,9 +14,6 @@
               "We wheel rock you"
               "Wheel Wheaton"])
 
-(defn log-yes-no []
-  (js/console.log "Spinned"))
-
 (defn the-wheel-says []
   (sayings (int (rand (count sayings)))))
 
