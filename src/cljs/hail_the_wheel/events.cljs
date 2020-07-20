@@ -9,11 +9,15 @@
  (fn [_ _]
    db/default-db))
 
-(def yes-no-string ["YES" "NO"])
+(def yes-no-strings ["YES" "NO"])
 
 (re-frame/reg-event-db
  :spin
- (fn [db]
-   (let [spin-result (yes-no-string (int (rand 2)))]
-   (js/console.log "Spin result:" spin-result)
-   (assoc db :yn spin-result))))
+ [(re-frame/inject-cofx :yn)]
+ (fn [cofx _]
+   (assoc cofx :yn (:yn cofx))))
+
+(re-frame/reg-cofx
+  :yn
+  (fn [cofx _]
+    (assoc-in cofx [:db :yn] (yes-no-strings (int (rand 2))))))

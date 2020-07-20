@@ -6,9 +6,12 @@
 
 (def sayings ["Der wheel zur macht"
               "Wheel power"
+              "Not a ferris wheel"
               "Boys wheel be boys"
               "Free wheel offering"
               "Time wheel tell"
+              "I wheel survive"
+              "We wheel rock you"
               "Wheel Wheaton"])
 
 (defn log-yes-no []
