@@ -20,7 +20,7 @@
 (defn wheel []
   (let [yn (re-frame/subscribe [::subs/yn])]
     [:div
-    [:h3 "The wheel says " @yn]
+    (when @yn [:h3 "The wheel says " @yn])
     [:input {:type "button" :value "Spin"
              :on-click #(re-frame.core/dispatch [:spin])}]]))
 
