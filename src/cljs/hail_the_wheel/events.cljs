@@ -13,11 +13,16 @@
 
 (re-frame/reg-event-fx
  :spin
- [(re-frame/inject-cofx :yn)]
+ [(re-frame/inject-cofx :rotation)]
  (fn [cofx _]
-   {:db (assoc (:db cofx) :yn (:yn cofx))}))
+   {:db (assoc (:db cofx) :rotation (:rotation cofx))}))
+
+(def min-value 1024)
+(def max-value 9999)
 
 (re-frame/reg-cofx
-  :yn
-  (fn [cofx _]
-    (assoc cofx :yn (yes-no-strings (int (rand 2))))))
+ :rotation
+ (fn [cofx _]
+   (let [deg (+ (int (* (rand) (- min-value max-value))) max-value)]
+     (js/console.log deg)
+     (assoc cofx :rotation deg))))

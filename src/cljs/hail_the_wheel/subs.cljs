@@ -3,6 +3,6 @@
    [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
- ::yn
+ ::rotation
  (fn [db]
-   (:yn db)))
+   (:rotation db)))
