@@ -9,6 +9,8 @@
               "Not a ferris wheel"
               "Boys wheel be boys"
               "Free wheel offering"
+              "You spin me right round, baby"
+              "Right round like a record, baby"
               "Time wheel tell"
               "I wheel survive"
               "We wheel rock you"
