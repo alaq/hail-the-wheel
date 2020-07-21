@@ -23,22 +23,20 @@
   (let [rotation (re-frame/subscribe [::subs/rotation])]
     [:div
      [:div.wheel-box
+      [:input.spin-button {:type "button" :value "Spin"
+                           :on-click #(re-frame.core/dispatch [:spin])}]
+
       [:div.box {:style {:transform (str "rotate(" @rotation "deg)")}}
        [:div.box1
         [:span.span1 [:b "YES"]]
         [:span.span2 [:b "YES"]]
         [:span.span3 [:b "YES"]]
-        [:span.span4 [:b "YES"]]
-        ]
+        [:span.span4 [:b "YES"]]]
        [:div.box2
         [:span.span1 [:b "NO"]]
         [:span.span2 [:b "NO"]]
         [:span.span3 [:b "NO"]]
-        [:span.span4 [:b "NO"]]
-        ]
-       ]]
-     [:input.spin-button {:type "button" :value "Spin"
-                          :on-click #(re-frame.core/dispatch [:spin])}]
+        [:span.span4 [:b "NO"]]]]]
      (when (not= @rotation 0) [:h3 "The wheel says " @rotation])]))
 
 (defn main-panel []

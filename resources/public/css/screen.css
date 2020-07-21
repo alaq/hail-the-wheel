@@ -6,7 +6,6 @@
 }
 
 body {
-  font-family: Open Sans;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +104,7 @@ span b {
   text-align: center;
   transform: translate(-50%,-50%);
   position: absolute;
+  z-index: 10;
   cursor: pointer;
   font-weight: bold;
   box-shadow: 0 5px 20px #000;

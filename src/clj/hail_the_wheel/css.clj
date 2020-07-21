@@ -8,7 +8,7 @@
        :margin 0
        :outline "none"
        }]
-  [:body {:font-family "Open Sans"
+  [:body {;:font-family "Open Sans"
           :display "flex"
           :justify-content "center"
           :align-items "center"
@@ -16,17 +16,17 @@
           :overflow "hidden"
           }]
   [:.wheel-box {:position "relative"
-               :width "500px"
-               :height "500px"}]
+                :width "500px"
+                :height "500px"}]
   [:.wheel-box [:&:after {
-                      :position "absolute"
-                      :content ""
-                      :background-color "red"
-                      :width "32px"
-                      :height "32px"
-                      :right "-30px"
-                      :top "50%"
-                      :transform "translateY(-50%)"}]]
+                          :position "absolute"
+                          :content ""
+                          :background-color "red"
+                          :width "32px"
+                          :height "32px"
+                          :right "-30px"
+                          :top "50%"
+                          :transform "translateY(-50%)"}]]
   [:.box {:width "100%"
           :height "100%"
           :position "relative"
@@ -60,36 +60,36 @@
            :transform "rotate(-135deg)"
            }]
   [:span [:b {
-            :height "65px"
-            :width "65px"
-            :line-height "65px"
-            :border-radius "50%"
-            :font-size "26px"
-            :text-align "center"
-            :background-color "#fff"
-            :position "absolute"
-            :top "50%"
-            :left "50%"
-            :transform "translate(-50%,-50%)"
-            :box-shadow "inset 0 3px 3px 0 #717171"
-            }]]
+              :height "65px"
+              :width "65px"
+              :line-height "65px"
+              :border-radius "50%"
+              :font-size "26px"
+              :text-align "center"
+              :background-color "#fff"
+              :position "absolute"
+              :top "50%"
+              :left "50%"
+              :transform "translate(-50%,-50%)"
+              :box-shadow "inset 0 3px 3px 0 #717171"
+              }]]
   [:.spin-button {
-            :position "absolute"
-            :top "50%"
-            :left "50%"
-            :transform "translate(-50%,-50%)"
-            :height "75px"
-            :width "75px"
-            :border-radius "50%"
-            :border "4px solid #fff"
-            :background-color "#ff5722"
-            :font-size "22px"
-            :font-weight "bold"
+                  :position "absolute"
+                  :top "50%"
+                  :left "50%"
+                  :transform "translate(-50%,-50%)"
+                  :height "75px"
+                  :width "75px"
+                  :border-radius "50%"
+                  :border "4px solid #fff"
+                  :background-color "#ff5722"
+                  :font-size "22px"
+                  :font-weight "bold"
                   :cursor "pointer"
-            :text-align "center"
-            :box-shadow "0 5px 20px #000"
-                 }]
+                  :z-index 10
+                  :text-align "center"
+                  :box-shadow "0 5px 20px #000"}]
   [:.spin-button [:&:active {
-                  :width "70px"
-                  :height "70px"
-                  :font-size "21px"}]])
+                             :width "70px"
+                             :height "70px"
+                             :font-size "21px"}]])
