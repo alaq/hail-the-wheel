@@ -1,46 +1,49 @@
 (ns hail-the-wheel.views
   (:require
-   [re-frame.core :as re-frame]
-   [hail-the-wheel.subs :as subs]
-   ))
+    [hail-the-wheel.subs :as subs]
+    [re-frame.core :as re-frame]))
 
-(def sayings ["Der wheel zur macht"
-              "Wheel power"
-              "Not a ferris wheel"
-              "Boys wheel be boys"
-              "Free wheel offering"
-              "You spin me right round, baby"
-              "Right round like a record, baby"
-              "Time wheel tell"
-              "I wheel survive"
-              "We wheel rock you"
-              "Wheel Wheaton"])
 
-(defn the-wheel-says []
+(def sayings
+  ["Der wheel zur macht"
+   "Wheel power"
+   "Not a ferris wheel"
+   "Boys wheel be boys"
+   "Free wheel offering"
+   "You spin me right round, baby"
+   "Right round like a record, baby"
+   "Time wheel tell"
+   "I wheel survive"
+   "We wheel rock you"
+   "Wheel Wheaton"])
+
+
+(defn the-wheel-says
+  []
   (sayings (int (rand (count sayings)))))
 
-(defn wheel []
-  (let [rotation (re-frame/subscribe [::subs/rotation])]
-    [:div
-     [:div.wheel-box
-      [:input.spin-button {:type "button" :value "Spin"
-                           :on-click #(re-frame.core/dispatch [:spin])}]
+(defn wheel
+  []
+  )
 
-      [:div.box {:style {:transform (str "rotate(" @rotation "deg)")}}
-       [:div.box1
-        [:span.span1 [:b "YES"]]
-        [:span.span2 [:b "YES"]]
-        [:span.span3 [:b "YES"]]
-        [:span.span4 [:b "YES"]]]
-       [:div.box2
-        [:span.span1 [:b "NO"]]
-        [:span.span2 [:b "NO"]]
-        [:span.span3 [:b "NO"]]
-        [:span.span4 [:b "NO"]]]]]
-     (when (not= @rotation 0) [:h3 "The wheel says " @rotation])]))
+(defn main-panel
+  []
+  [:div#wrapper
+   [:h1#top-text "Hail the Wheel!"]
+(let [rotation (re-frame/subscribe [::subs/rotation])]
+    [:div#wheel
+     [:div#inner-wheel {:style {:transform (str "rotate(" @rotation "deg)")}}
+      [:div#section1 [:span.yn-text "YES"]]
+      [:div#section2 [:span.yn-text "NO"]]
+      [:div#section3 [:span.yn-text "YES"]]
+      [:div#section4 [:span.yn-text "NO"]]
+      [:div#section5 [:span.yn-text "YES"]]
+      [:div#section6 [:span.yn-text "NO"]]]
+     [:div#spin {:on-click #(re-frame.core/dispatch [:spin])}
+      [:div#inner-spin]]]
 
-(defn main-panel []
-    [:div
-        [:h1 "Hail the Wheel!"]
-        [:h2 [the-wheel-says]]
-        [wheel]])
+    )
+   [:h2 (if (= 0 0)
+          [the-wheel-says]
+          (str "The wheel says " ;rotation
+                                 ))]])

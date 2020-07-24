@@ -35,7 +35,7 @@
                              :linux   "xdg-open"}}}
 
   :shadow-cljs {:nrepl {:port 8777}
-                
+
                 :builds {:app {:target :browser
                                :output-dir "resources/public/js/compiled"
                                :asset-path "/js/compiled"
@@ -43,8 +43,7 @@
                                                :preloads [devtools.preload]}}
 
                                :devtools {:http-root "resources/public"
-                                          :http-port 8280
-                                          }}}}
+                                          :http-port 8280}}}}
 
   :aliases {"dev"          ["with-profile" "dev" "do"
                             ["shadow" "watch" "app"]]
@@ -62,8 +61,6 @@
    {:dependencies [[binaryage/devtools "1.0.2"]]
     :source-paths ["dev"]}
 
-   :prod {}
-   
-}
+   :prod {}}
 
   :prep-tasks [["garden" "once"]])
