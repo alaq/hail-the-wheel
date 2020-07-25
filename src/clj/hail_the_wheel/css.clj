@@ -2,6 +2,18 @@
   (:require
     [garden.def :refer [defstyles defkeyframes]]))
 
+
+(def red "#f98ca4")
+(def blue "#4ad9db")
+(def green "#65f283")
+(def orange "#f5b10b")
+(def darkblue "#2f3e9c")
+(def darkred "#9e132c")
+(def purple "#6e1f58")
+(def pink "#c0faca")
+(def outline "2px")
+
+
 (defkeyframes my-animation
   [:0% :100%
    {:transform "rotate(0deg)"}]
@@ -9,16 +21,31 @@
   [:50%
    {:transform "rotate(7deg)"}])
 
+
 (defstyles screen
   [:* {:padding 0
        :margin 0}]
-  [:body {:background "#eaeaea"
-          :body "#fff"
-          :font-family "sans-serif"
-          :font-size "18px"}]
+  [:html :body
+   {:width "100%"
+    :height "100%"
+    :background "linear-gradient(10deg, rgba(244,235,160,1) 73%,rgba(192,250,202,1) 73%)"
+    :body "#fff"
+    :font-family "sans-serif"
+    :font-size "18px"}]
 
   [:h1 :h2 {:text-align "center"
-            :text-transform "uppercase"}]
+            :line-height 1
+            :font-size "2.5vw"
+            ;; :text-shadow
+            :text-transform "uppercase"
+            :text-shadow (str "-1px -1px 0 " purple ", 1px -1px 0 " purple ", -1px 1px 0 " purple ", 1px 1px 0 " purple ", 1px 0px 0px " green ", 0px 1px 0px " green ", 2px 1px 0px " green ", 1px 2px 0px " green ", 3px 2px 0px " green ", 2px 3px 0px " green ", 4px 3px 0px " green ", 3px 4px 0px " green ", 5px 4px 0px " green ", 3px 5px 0px " purple ", 6px 5px 0px " purple ", -1px 2px 0 black, 0 3px 0 " purple ", 1px 4px 0 " purple ", 2px 5px 0px " purple ", 2px -1px 0 " purple ", 3px 0 0 " purple ", 4px 1px 0 " purple ", 5px 2px 0px " purple ", 6px 3px 0 " purple ", 7px 4px 0 " purple ", 10px 10px 4px #dac249")}]
+
+  [:h1 {:font-size "2.5vw"
+        :color blue}]
+
+  [:h2 {:font-size "1.8vw"
+        :color pink}]
+
   [:#wrapper {:margin "40px auto 0"
               :width "266px"
               :position "relative"}]
@@ -137,5 +164,5 @@
   [:#spin:active:after {:font-size "15px"}]
 
   [my-animation
-  [:.spin
-   {:animation [[my-animation "0.1s"]]}]])
+   [:.spin
+    {:animation [[my-animation "0.1s"]]}]])

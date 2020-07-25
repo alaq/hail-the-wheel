@@ -3,7 +3,9 @@
     [hail-the-wheel.db :as db]
     [re-frame.core :as re-frame]))
 
+
 (defonce clicks (atom 0))
+
 
 (re-frame/reg-event-db
   ::initialize-db
