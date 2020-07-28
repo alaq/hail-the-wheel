@@ -5,6 +5,7 @@
 
 
 (defonce clicks (atom 0))
+(defonce timeouts (atom {}))
 
 
 (re-frame/reg-event-db
@@ -20,7 +21,28 @@
   :spin
   [(re-frame/inject-cofx :rotation)]
   (fn [cofx _]
-    {:db (assoc (:db cofx) :rotation (:rotation cofx) :show-result (:show-result cofx))}))
+    {:db (assoc (:db cofx) :rotation (:rotation cofx) :show-result (:show-result cofx))
+     :timeout {:id :show-result-id
+               :event [:show-result]
+               :time 5900}}))
+
+(re-frame/reg-fx
+ :timeout
+ (fn [{:keys [id event time]}]
+   (when-some [existing (get @timeouts id)]
+     (js/clearTimeout existing)
+     (swap! timeouts dissoc id))
+   (when (some? event)
+     (swap! timeouts assoc id
+     (js/setTimeout
+      (fn []
+        (re-frame/dispatch event))
+      time)))))
+
+(re-frame/reg-event-db
+ :show-result
+ (fn [db]
+   (assoc db :show-result true)))
 
 (def base-rotation 1800)
 
@@ -30,4 +52,4 @@
     (swap! clicks inc)
     (let [new-base-rotation (* @clicks base-rotation)
           deg (+ (+ 1 (int (* (rand) 360))) new-base-rotation)]
-      (assoc cofx :rotation deg :show-result true))))
+      (assoc cofx :rotation deg :show-result false))))
