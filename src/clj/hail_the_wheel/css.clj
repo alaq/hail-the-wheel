@@ -2,7 +2,6 @@
   (:require
     [garden.def :refer [defstyles defkeyframes]]))
 
-
 (def red "#f98ca4")
 (def blue "#4ad9db")
 (def green "#65f283")
@@ -17,10 +16,13 @@
 (defkeyframes my-animation
   [:0% :100%
    {:transform "rotate(0deg)"}]
-
   [:50%
    {:transform "rotate(7deg)"}])
 
+(defkeyframes floating
+  [:from { :transform "translate(0, 0px)" }]
+  [:65% { :transform "translate(0, 15px)" }]
+  [:to { :transform "translate(0, -0px)" }])
 
 (defstyles screen
   [:* {:padding 0
@@ -35,15 +37,29 @@
 
   [:h1 :h2 {:text-align "center"
             :line-height 1
-            :font-size "2.5vw"
-            ;; :text-shadow
             :text-transform "uppercase"
-            :text-shadow (str "-1px -1px 0 " purple ", 1px -1px 0 " purple ", -1px 1px 0 " purple ", 1px 1px 0 " purple ", 1px 0px 0px " green ", 0px 1px 0px " green ", 2px 1px 0px " green ", 1px 2px 0px " green ", 3px 2px 0px " green ", 2px 3px 0px " green ", 4px 3px 0px " green ", 3px 4px 0px " green ", 5px 4px 0px " green ", 3px 5px 0px " purple ", 6px 5px 0px " purple ", -1px 2px 0 black, 0 3px 0 " purple ", 1px 4px 0 " purple ", 2px 5px 0px " purple ", 2px -1px 0 " purple ", 3px 0 0 " purple ", 4px 1px 0 " purple ", 5px 2px 0px " purple ", 6px 3px 0 " purple ", 7px 4px 0 " purple ", 10px 10px 4px #dac249")}]
+            :text-shadow (str "-1px -1px 0 " purple ", 1px -1px 0 " purple ", -1px 1px 0 " purple ", 1px 1px 0 " purple ", 1px 0px 0px " green ", 0px 1px 0px " green ", 2px 1px 0px " green ", 1px 2px 0px " green ", 3px 2px 0px " green ", 2px 3px 0px " green ", 4px 3px 0px " green ", 3px 4px 0px " green ", 5px 4px 0px " green ", 3px 5px 0px " purple ", 6px 5px 0px " purple ", -1px 2px 0 black, 0 3px 0 " purple ", 1px 4px 0 " purple ", 2px 5px 0px " purple ", 2px -1px 0 " purple ", 3px 0 0 " purple ", 4px 1px 0 " purple ", 5px 2px 0px " purple ", 5px 2px 0 " purple ", 6px 3px 0 " purple ", 8px 8px 4px #dac249"
+                              )}]
 
-  [:h1 {:font-size "2.5vw"
+  [:h1 {:font-size "38pt"
         :color blue}]
 
-  [:h2 {:font-size "1.8vw"
+  [:#result {:font-size "72pt"
+             :position "absolute"
+             :color "#65f283"
+             :top "250px"
+             :right "-35px"
+             :z-index 10
+             :text-shadow (str "-1px -1px 0 " purple ", 1px -1px 0 " purple ", -1px 1px 0 " purple ", 1px 1px 0 " purple ", 1px 0px 0px " green ", 0px 1px 0px " green ", 2px 1px 0px " green ", 1px 2px 0px " green ", 3px 2px 0px " green ", 2px 3px 0px " green ", 4px 3px 0px " green ", 3px 4px 0px " green ", 5px 4px 0px " green ", 3px 5px 0px " purple ", 6px 5px 0px " purple ", -1px 2px 0 black, 0 3px 0 " purple ", 1px 4px 0 " purple ", 2px 5px 0px " purple ", 2px -1px 0 " purple ", 3px 0 0 " purple ", 4px 1px 0 " purple ", 5px 2px 0px " purple ", 5px 2px 0 " purple ", 6px 3px 0 " purple ", 8px 8px 4px rgba(0,0,0,0.3)")
+             :animation-name "floating"
+             :animation-duration "3s"
+             :animation-iteration-count "infinite"
+             :animation-timing-function "ease-in-out" }]
+
+  [:#result:focus {:display "none"}]
+
+
+  [:h2 {:font-size "22pt"
         :color pink}]
 
   [:#wrapper {:margin "40px auto 0"
@@ -55,7 +71,7 @@
             :height "250px"
             :overflow "hidden"
             :border "8px solid #fff"
-            :box-shadow "rgba(0,0,0,0.2) 0px 0px 10px, rgba(0,0,0,0.05) 0px 3px 0px"
+            :box-shadow (str "-1px -1px 0 " purple ", 1px -1px 0 " purple ", -1px 1px 0 " purple ", 1px 1px 0 " purple ", 1px 0px 0px " green ", 0px 1px 0px " green ", 2px 1px 0px " green ", 1px 2px 0px " green ", 3px 2px 0px " green ", 2px 3px 0px " green ", 4px 3px 0px " green ", 3px 4px 0px " green ", 5px 4px 0px " green ", 3px 5px 0px " purple ", 6px 5px 0px " purple ", -1px 2px 0 black, 0 3px 0 " purple ", 1px 4px 0 " purple ", 2px 5px 0px " purple ", 2px -1px 0 " purple ", 3px 0 0 " purple ", 4px 1px 0 " purple ", 5px 2px 0px " purple ", 5px 2px 0 " purple ", 6px 3px 0 " purple ", 8px 8px 4px #dac249")
             :transform "rotate(0deg)"
             :margin-top "1em"
             :margin-bottom "1em"
@@ -106,14 +122,17 @@
                         :border-color "#c0392b transparent"}]]
 
   [:#wheel [:div [:.yn-text {:margin-top "-100px"
-                             :color "rgba(0,0,0,0.2)"
+                             :color "white"
                              :position "relative"
                              :z-index 100000
                              :display "block"
                              :text-align "center"
-                             :font-size "16px"
-                             :margin-left "-15px"
+                             :font-size "24px"
+                             :border-color "black"
+                             :border-width "1px"
                              :text-shadow "rgba(255, 255, 255, 0.1) 0px -1px 0px, rgba(0, 0, 0, 0.2) 0px 1px 0px"}]]]
+  [:#wheel [:div [:.yes {:margin-left "-24px"}]]]
+  [:#wheel [:div [:.no {:margin-left "-19px"}]]]
 
   [:#spin {:width "68px"
            :height "68px"
@@ -126,13 +145,14 @@
            :background "#fff"
            :cursor "pointer"
            :font-family "sans-serif"
+           :box-shadow (str "-1px -1px 0 " purple ", 1px -1px 0 " purple ", -1px 1px 0 " purple ", 1px 1px 0 " purple ", 1px 0px 0px " green ", 0px 1px 0px " green ", 2px 1px 0px " green ", 1px 2px 0px " green ", 3px 2px 0px " green ", 2px 3px 0px " green ", 4px 3px 0px " green ", 3px 4px 0px " green ", 5px 4px 0px " green ", 3px 5px 0px " purple ", 6px 5px 0px " purple ", -1px 2px 0 black, 0 3px 0 " purple ", 1px 4px 0 " purple ", 2px 5px 0px " purple ", 2px -1px 0 " purple ", 3px 0 0 " purple ", 4px 1px 0 " purple ", 5px 2px 0px " purple ", 5px 2px 0 " purple ", 6px 3px 0 " purple)
            :user-select "none"}]
 
   [:#spin:after {:content "\"SPIN\""
                  :text-align "center"
                  :line-height "68px"
                  :color "#CCC"
-                 :text-shadow "0 2px 0 #fff, 0 -2px 0 rgba(0,0,0,0.3)"
+                 :text-shadow "0 2px 0 #fff, 0 -1px 0 rgba(0,0,0,0.3)"
                  :position "relative"
                  :z-index 100000
                  :width "68px"
@@ -165,4 +185,7 @@
 
   [my-animation
    [:.spin
-    {:animation [[my-animation "0.1s"]]}]])
+    {:animation [[my-animation "0.1s"]]}]]
+
+  [floating
+   [:#result]])
