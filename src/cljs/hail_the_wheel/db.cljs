@@ -2,4 +2,5 @@
 
 
 (def default-db
-  {:rotation 0})
+  {:rotation 0
+   :show-result false})

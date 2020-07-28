@@ -7,3 +7,8 @@
   ::rotation
   (fn [db]
     (:rotation db)))
+
+(re-frame/reg-sub
+  ::show-result
+  (fn [db]
+    (:show-result db)))

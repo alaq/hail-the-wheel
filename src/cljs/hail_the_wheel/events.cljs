@@ -20,11 +20,9 @@
   :spin
   [(re-frame/inject-cofx :rotation)]
   (fn [cofx _]
-    {:db (assoc (:db cofx) :rotation (:rotation cofx))}))
-
+    {:db (assoc (:db cofx) :rotation (:rotation cofx) :show-result (:show-result cofx))}))
 
 (def base-rotation 1800)
-
 
 (re-frame/reg-cofx
   :rotation
@@ -32,5 +30,4 @@
     (swap! clicks inc)
     (let [new-base-rotation (* @clicks base-rotation)
           deg (+ (+ 1 (int (* (rand) 360))) new-base-rotation)]
-      (js/console.log deg)
-      (assoc cofx :rotation deg))))
+      (assoc cofx :rotation deg :show-result true))))

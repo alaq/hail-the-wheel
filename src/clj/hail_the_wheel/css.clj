@@ -47,7 +47,7 @@
   [:#result {:font-size "72pt"
              :position "absolute"
              :color "#65f283"
-             :top "250px"
+             :top "380px"
              :right "-35px"
              :z-index 10
              :text-shadow (str "-1px -1px 0 " purple ", 1px -1px 0 " purple ", -1px 1px 0 " purple ", 1px 1px 0 " purple ", 1px 0px 0px " green ", 0px 1px 0px " green ", 2px 1px 0px " green ", 1px 2px 0px " green ", 3px 2px 0px " green ", 2px 3px 0px " green ", 4px 3px 0px " green ", 3px 4px 0px " green ", 5px 4px 0px " green ", 3px 5px 0px " purple ", 6px 5px 0px " purple ", -1px 2px 0 black, 0 3px 0 " purple ", 1px 4px 0 " purple ", 2px 5px 0px " purple ", 2px -1px 0 " purple ", 3px 0 0 " purple ", 4px 1px 0 " purple ", 5px 2px 0px " purple ", 5px 2px 0 " purple ", 6px 3px 0 " purple ", 8px 8px 4px rgba(0,0,0,0.3)")
